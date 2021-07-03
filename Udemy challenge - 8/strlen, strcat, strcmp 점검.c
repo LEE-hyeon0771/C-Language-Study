@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-
+#include<stdbool.h>
 
 int stringLength(const char string[]) {
     int i = 0;
@@ -20,19 +20,19 @@ void concat(char result[], const char str1[], const char str2[]) {
     result[i + j] = NULL;
 }
 
-int equalStrings(const char s1[], const char s2[]) {
+bool equalStrings(const char s1[], const char s2[]) {
     int i = 0;
-    
+    bool inEquals = false;
     while (s1[i] == s2[i] && s1[i] != NULL && s2[i] != NULL) {
         i++;
     }
     if (s1[i] == NULL && s2[i] == NULL) {
-        printf("Equal\n");
+        inEquals = true;
     }
     else {
-        printf("Not Equal\n");
+        inEquals = false;
     }
-    
+    return inEquals;
 }
 
 int main() {
@@ -42,10 +42,13 @@ int main() {
     char result[50];
 
     printf("String Length of three words : word1:%d, word2:%d, word3:%d\n", stringLength(word1), stringLength(word2), stringLength(word3));
+    
     concat(result, word2, word3);
+    printf("result = %s\n", result);
     concat(result, word1, word2);
-    printf("\n");
-    printf("Strcmp: word1,word2 = %d, word2,word3 = %d", equalStrings("jason","jason"), equalStrings("jasons","jason"));
+    printf("result = %s\n", result);
+  
+    printf("Strcmp 같은면 1, 다르면 0 반환: (jason, jason) = %d, (jasons, jason) = %d", equalStrings("jason","jason"), equalStrings("jasons","jason"));
 
 }
 
