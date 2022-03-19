@@ -1,15 +1,15 @@
 /*
 
   순차탐색 알고리즘과 이진탐색 알고리즘의 성능 비교
-
+  이현 2021247013
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <time.h>
-#include <stdlib.h>
 
-#define len 10000000L
-int list[len];
+
+#define len 100000000L
+
 
 int LSearch(int list[], int n, int targetnum) {
 	int i;
@@ -52,8 +52,9 @@ int main(void) {
 	int target;
 	int index;
 	clock_t start, finish;
-	clock_t time_elapsed_LS, time_elapsed_BS;
+	float time_elapsed_LS, time_elapsed_BS;
 
+	int list[len];
 	for (int i = 0; i < len; i++) {
 		list[i] = i;
 	}
@@ -65,20 +66,22 @@ int main(void) {
 	printf("target = %d\n", target);
 
 	// linear search (순차탐색) 수행 
-
+	
 	start = clock();
 	index = LSearch(list, len, target);
 	finish = clock();
-	time_elapsed_LS = finish - start;
+	time_elapsed_LS = float(finish - start) / CLOCKS_PER_SEC;
 	
-	printf("\n순차탐색: target %d의 위치 인덱스값은 %d이다. 소요시간은 % lf초이다", target, index, (double)time_elapsed_LS);
+	printf("\n순차탐색: target %d의 위치 인덱스값은 %d이다. 소요시간은 %f초이다", target, index, time_elapsed_LS);
 
 	// binary search (이진탐색) 수행 
+	
 	start = clock();
 	index = BSearch(list, len, target);
 	finish = clock();
-	time_elapsed_BS = finish - start;
-	printf("\n이진탐색: target %d의 위치 인덱스값은 %d이다. 소요시간은 % lf초이다", target, index, (double)time_elapsed_BS);
+	time_elapsed_BS = float(finish - start)/CLOCKS_PER_SEC;
+	
+	printf("\n이진탐색: target %d의 위치 인덱스값은 %d이다. 소요시간은 %f초이다", target, index, time_elapsed_BS);
 
 	return 0;
 }
