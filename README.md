@@ -1,3 +1,4 @@
 #C language
 
-University homework & self coding & Udemy
+1. Homework of University & Udemy for C
+2. DataStructure
