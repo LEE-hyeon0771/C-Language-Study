@@ -1,3 +1,4 @@
-#C language
+# C_Language
 
-University homework & self coding & Udemy
+Homework of University & Udemy for C
+
